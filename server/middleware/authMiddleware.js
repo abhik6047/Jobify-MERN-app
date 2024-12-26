@@ -1,7 +1,7 @@
 import {
+	BadRequestError,
 	UnauthenticatedError,
 	UnauthorizedError,
-	BadRequestError,
 } from "../errors/customErrors.js";
 import { verifyJWT } from "../utils/tokenUtils.js";
 
