@@ -13,10 +13,6 @@ import authRouter from "./routes/authRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 import userRouter from "./routes/userRouter.js";
 
-// public
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-
 // Middleware imports
 import { authenticateUser } from "./middleware/authMiddleware.js";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
@@ -27,8 +23,6 @@ cloudinary.config({
 	api_secret: process.env.CLOUD_API_SECRET,
 });
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5100;
@@ -38,12 +32,11 @@ if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
 }
 
-app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(cookieParser());
 app.use(express.json());
 app.use(
 	cors({
-		origin: "https://jobify-mern-app-frontend.vercel.app",
+		origin: process.env.FRONTEND_URL,
 		credentials: true,
 	})
 );
@@ -55,14 +48,6 @@ app.use("/api/v1/auth", authRouter);
 app.get("/", (req, res) => {
 	res.send("API working");
 });
-
-// app.get("*", (req, res) => {
-// 	res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
-// });
-
-// app.use("*", (req, res) => {
-// 	res.status(404).json({ msg: "No found !" });
-// });
 
 app.use(errorHandlerMiddleware);
 
