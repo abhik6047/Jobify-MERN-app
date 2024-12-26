@@ -1,8 +1,8 @@
 import { Form, Link, useSubmit } from "react-router-dom";
 import { FormRow, FormRowSelect, SubmitBtn } from ".";
-import { JOB_SORT_BY, JOB_STATUS, JOB_TYPE } from "../../../utils/constants.js";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { useAllJobsContext } from "../pages/AllJobs";
+import { JOB_SORT_BY, JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
 
 const SearchContainer = () => {
 	const { searchValues } = useAllJobsContext();
