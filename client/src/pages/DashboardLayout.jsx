@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import Cookies from "js-cookie";
 import { createContext, useContext, useState } from "react";
 import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,6 +10,8 @@ import SmallSidebar from "../components/SmallSidebar";
 import customFetch from "../utils/customFetch";
 
 export const loader = async () => {
+	console.log("all cookies", Cookies.get());
+
 	try {
 		const { data } = await customFetch.get("/users/current-user");
 		return data;

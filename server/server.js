@@ -32,7 +32,6 @@ if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
 }
 
-app.use(cookieParser());
 app.use(express.json());
 app.use(
 	cors({
@@ -40,6 +39,7 @@ app.use(
 		credentials: true,
 	})
 );
+app.use(cookieParser());
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
