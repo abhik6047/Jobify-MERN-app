@@ -8,8 +8,6 @@ import { verifyJWT } from "../utils/tokenUtils.js";
 export const authenticateUser = (req, res, next) => {
 	const { token } = req.cookies;
 
-	console.log("req.cookies", req.cookies);
-
 	if (!token) throw new UnauthenticatedError("authentication invalid");
 
 	try {
