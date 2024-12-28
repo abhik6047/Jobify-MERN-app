@@ -11,7 +11,7 @@ Jobify is your personal job tracking assistant, simplifying the job search proce
 
 ## Demo
 
-Live project hosted on render platform - [JOBIFY](https://jobify-mern-app-frontend.vercel.app/)
+Live project - [JOBIFY](https://jobify-mern-app-frontend.vercel.app/)
 
 ## Features
 
